@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var request = require('request');
+var request = require('superagent');
 var bodyParser = require('body-parser');
 var jade = require('jade');
 var app = express();
@@ -18,9 +18,10 @@ app.post('/', function(req, res) {
   var lat = req.body.lat;
   var lon = req.body.lon;
   console.log(lat, lon)
-  request('http://api.wunderground.com/api/' + process.env.WUNDERAPI + '/geolookup/conditions/q/' + lat + ',' + lon + '.json',
-    function(err, response, body) {
-      var parsedBody = JSON.parse(body);
+  request
+    .get('http://api.wunderground.com/api/' + process.env.WUNDERAPI + '/geolookup/conditions/q/' + lat + ',' + lon + '.json')
+    .end(function(err, response) {
+      var parsedBody = JSON.parse(response.text);
       if(!err) {
         var weather = parsedBody.current_observation;
         var rain = weather.precip_1hr_in;
