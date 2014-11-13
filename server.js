@@ -37,7 +37,7 @@ app.post('/', function(req, res) {
           obj.rain = 'yes';
         }
         // if ()her
-        res.send(obj);
+        res.json(obj);
       }
   });
 });
