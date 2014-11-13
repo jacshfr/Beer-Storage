@@ -10,7 +10,7 @@ var cityState = '', lat, lon;
       // console.log(lat, lon);
       $.ajax({
         type: 'POST',
-        url: '/weather',
+        url: 'https://shouldiweararainjacket.herokuapp.com/weather',
         data: {"lat":lat,
               "lon": lon},
         success: function(parsed_json) {
