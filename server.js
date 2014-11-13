@@ -17,26 +17,28 @@ app.use(bodyParser.urlencoded({
 app.post('/', function(req, res) {
   var lat = req.body.lat;
   var lon = req.body.lon;
-  console.log(lat, lon)
+  console.log(lat, lon);
+  console.log(process.env.WUNDERAPI);
   request
     .get('http://api.wunderground.com/api/' + process.env.WUNDERAPI + '/geolookup/conditions/q/' + lat + ',' + lon + '.json')
     .end(function(err, response) {
       var parsedBody = JSON.parse(response.text);
       if(!err) {
         var weather = parsedBody.current_observation;
-        // var rain = weather.precip_1hr_in;
-        // var cond = weather.weather;
-        // var temp = weather.temp_f;
+        console.log(weather);
+        var rain = weather.precip_1hr_in;
+        var cond = weather.weather;
+        var temp = weather.temp_f;
 
         var obj = {jacket: 'no jacket',
                    rain: 'no rain',
                    temp: 'cold'};
-        // if (cond != 'Clear' || temp < 60) {
-        //   obj.jacket = 'yes';
-        // }
-        // if (rain > 1) {
-        //   obj.rain = 'yes';
-        // }
+        if (cond != 'Clear' || temp < 60) {
+          obj.jacket = 'yes';
+        }
+        if (rain > 1) {
+          obj.rain = 'yes';
+        }
         // if ()her
         res.json(obj);
       }
