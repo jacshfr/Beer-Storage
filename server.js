@@ -23,19 +23,23 @@ app.post('/', function(req, res) {
       var parsedBody = JSON.parse(body);
       if(!err) {
         var weather = parsedBody.current_observation;
-        // var rain = weather.precip_1hr_in;
-        // var cond = weather.weather;
-        // var temp = weather.temp_f;
+        var rain = weather.precip_1hr_in;
+        var cond = weather.weather;
+        var temp = weather.temp_f;
 
         var obj = {jacket: 'no jacket',
-                   // rain: 'no rain',
-                   temp: 'something'};
-        // if (cond != 'Clear' || temp < 60) {
-        //   obj.jacket = 'jacket';
-        // }
-        // if (rain > 1) {
-        //   obj.rain = 'rain'
-        // }
+                   rain: 'no rain',
+                   temp: temp};
+        if (cond != 'Clear' || temp < 60) {
+          obj.jacket = 'yes';
+        } else {
+          obj.jacket = 'no';
+        }
+        if (rain > 1) {
+          obj.rain = 'yes';
+        } else {
+          obj.rain = 'no';
+        }
         // if ()her
         res.send(obj);
       }
