@@ -24,8 +24,8 @@ app.post('/', function(req, res) {
       if(!err) {
         var weather = parsedBody.current_observation;
         // var rain = weather.precip_1hr_in;
-        var cond = weather.weather;
-        var temp = weather.temp_f;
+        // var cond = weather.weather;
+        // var temp = weather.temp_f;
 
         var obj = {jacket: 'no jacket',
                    // rain: 'no rain',
