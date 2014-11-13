@@ -32,13 +32,9 @@ app.post('/', function(req, res) {
                    temp: temp};
         if (cond != 'Clear' || temp < 60) {
           obj.jacket = 'yes';
-        } else {
-          obj.jacket = 'no';
         }
         if (rain > 1) {
           obj.rain = 'yes';
-        } else {
-          obj.rain = 'no';
         }
         // if ()her
         res.send(obj);

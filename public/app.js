@@ -16,9 +16,7 @@
               lon: lon},
         success: function(parsedJson) {
           console.log(parsedJson);
-          $('#jacket').text('Jacket?: ' + parsedJson.jacket);
-          $('#rain').text('Rain?: ' + parsedJson.rain);
-          $('#temp').text('Temperature?: ' + parsedJson.temp);
+          $('header').text(parsedJson.jacket + parsedJson.rain + parsedJson.temp);
         },
         dataType: 'json'
       });
