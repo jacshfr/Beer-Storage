@@ -1,5 +1,4 @@
 'use strict';
-$
 var cityState = '', lat, lon;
 (function() {
   if ("geolocation" in navigator) {
@@ -10,7 +9,7 @@ var cityState = '', lat, lon;
       // console.log(lat, lon);
       $.ajax({
         type: 'POST',
-        url: 'https://shouldiweararainjacket.herokuapp.com/weather',
+        url: '/',
         data: {"lat":lat,
               "lon": lon},
         success: function(parsed_json) {

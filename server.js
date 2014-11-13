@@ -3,16 +3,27 @@
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
+var jade = require('jade');
 var app = express();
 
 var port = process.env.PORT || 2000;
 
+var username = 'jack';
+
 app.use(express.static(__dirname + '/public'));
+
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
+
+// app.get('/', function(req, res) {
+//   res.render('index', {userName: username});
+// });
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.post('/weather', function(req, res) {
+app.post('/', function(req, res) {
   var lat = req.body.lat;
   var lon = req.body.lon;
   console.log(lat, lon)
@@ -34,8 +45,7 @@ app.post('/weather', function(req, res) {
         if (rain > 1) {
           obj.rain = 'rain'
         }
-        // if ()
-
+        // if ()her
         res.send(obj);
       }
   });
