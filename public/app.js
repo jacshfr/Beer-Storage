@@ -1,5 +1,5 @@
 'use strict';
-
+$
 var cityState = '', lat, lon;
 (function() {
   if ("geolocation" in navigator) {
