@@ -1,11 +1,45 @@
 'use strict';
 
 var express = require('express');
+var request = require('request');
+var bodyParser = require('body-parser');
 var app = express();
 
 var port = process.env.PORT || 2000;
 
-app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.post('/weather', function(req, res) {
+  var lat = req.body.lat;
+  var lon = req.body.lon;
+  console.log(lat, lon)
+  request('http://api.wunderground.com/api/' + process.env.WUNDERAPI + '/geolookup/conditions/q/' + lat + ',' + lon + '.json',
+    function(err, response, body) {
+      var parsedBody = JSON.parse(body);
+      if(!err) {
+        var weather = parsedBody.current_observation;
+        var rain = weather.precip_1hr_in;
+        var cond = weather.weather;
+        var temp = weather.temp_f;
+
+        var obj = {jacket: 'no jacket',
+                   rain: 'no rain',
+                   temp: temp};
+        if (cond != 'Clear' || temp < 60) {
+          obj.jacket = 'jacket';
+        }
+        if (rain > 1) {
+          obj.rain = 'rain'
+        }
+        // if ()
+
+        res.send(obj);
+      }
+  });
+});
 
 app.listen(port);
 console.log('listening to ' + port);
