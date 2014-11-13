@@ -7,23 +7,23 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     jshint: {
-      all: ['lib/*.js'],
+      all: ['public/app.js'],
       options: {
         jshintrc: true
       }
     },
 
     jscs: {
-      src: 'lib/**/*.js',
+      src: 'public/app.js',
       options: {
         config: '.jscsrc'
       }
     },
-          
+
     simplemocha: {
       src: ['test/**/*.js']
-    }     
-  });    
+    }
+  });
   grunt.registerTask('test', ['jshint', 'jscs', 'simplemocha']);
   grunt.registerTask('default', ['test']);
 };

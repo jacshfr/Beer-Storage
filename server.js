@@ -29,10 +29,10 @@ app.post('/', function(req, res) {
 
         var obj = {jacket: 'no jacket',
                    // rain: 'no rain',
-                   temp: temp};
-        if (cond != 'Clear' || temp < 60) {
-          obj.jacket = 'jacket';
-        }
+                   temp: 'something'};
+        // if (cond != 'Clear' || temp < 60) {
+        //   obj.jacket = 'jacket';
+        // }
         // if (rain > 1) {
         //   obj.rain = 'rain'
         // }

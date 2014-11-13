@@ -1,7 +1,9 @@
 'use strict';
-var cityState = '', lat, lon;
+
 (function() {
-  if ("geolocation" in navigator) {
+  var lat;
+  var lon;
+  if ('geolocation' in navigator) {
     console.log(navigator.geolocation);
     navigator.geolocation.getCurrentPosition(function(position) {
       lat = position.coords.latitude;
@@ -10,11 +12,11 @@ var cityState = '', lat, lon;
       $.ajax({
         type: 'POST',
         url: '/',
-        data: {"lat":lat,
-              "lon": lon},
-        success: function(parsed_json) {
-          console.log(parsed_json);
-          $('header').text(parsed_json.jacket + parsed_json.rain + parsed_json.temp);
+        data: {lat:lat,
+              lon: lon},
+        success: function(parsedJson) {
+          console.log(parsedJson);
+          $('header').text(parsedJson.jacket + parsedJson.rain + parsedJson.temp);
         },
         dataType: 'json'
       });
@@ -22,7 +24,7 @@ var cityState = '', lat, lon;
     });
     /* geolocation is available */
   } else {
-    console.log('no')
+    console.log('no');
     /* geolocation IS NOT available */
   }
 }());
