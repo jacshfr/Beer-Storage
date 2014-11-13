@@ -30,7 +30,8 @@ app.post('/', function(req, res) {
 
         var obj = {jacket: 'no jacket',
                    rain: 'no rain',
-                   temp: temp};
+                   temp: temp,
+                   test: 'test'};
         if (cond != 'Clear' || temp < 60) {
           obj.jacket = 'yes';
         }

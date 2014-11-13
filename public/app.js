@@ -23,6 +23,7 @@
         dataType: 'json'
       });
       console.log('sent');
+      console.log(lat, lon);
     });
     /* geolocation is available */
   } else {
