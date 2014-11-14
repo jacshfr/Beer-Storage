@@ -33,7 +33,7 @@ app.post('/text', function(req, res) {
 });
 
 app.post('/response', function(req, res) {
-      res.send(req);
+      res.send(res.body = 'hi');
 });
 
 app.post('/', function(req, res) {
