@@ -22,7 +22,6 @@
         },
         dataType: 'json'
       });
-      console.log('sent');
       console.log(lat, lon);
     });
     /* geolocation is available */
@@ -30,4 +29,14 @@
     console.log('no');
     /* geolocation IS NOT available */
   }
+    $.ajax({
+    type: 'POST',
+    url: '/text',
+    data: {msg:"cmon"},
+    success: function(parsedJson) {
+      console.log(parsedJson);
+      console.log('success');
+    },
+    dataType: 'json'
+  });
 }());
