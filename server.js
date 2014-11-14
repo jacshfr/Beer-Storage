@@ -33,18 +33,7 @@ app.post('/text', function(req, res) {
 });
 
 app.post('/response', function(req, res) {
-  twil.sendMessage({
-      to: "+19152521559",
-      from: "+19152137735",
-      body: 'from twilio',
-      statusCallback: function(err) {
-        console.log('it worked');
-        }
-    }), function(err, message) {
-      console.log('hullo');
-      // console.log(message.sid);
-      };
-      res.send(req.body);
+      res.send(req);
 });
 
 app.post('/', function(req, res) {
