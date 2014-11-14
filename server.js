@@ -28,7 +28,7 @@ app.post('/', function(req, res) {
         var cond = weather.weather;
         var temp = weather.temp_f;
 
-        var obj = {jacket: 'no jacket',
+        var obj = {jacket:git  'no jacket',
                    rain: 'no rain',
                    temp: temp,
                    test: 'test'};
