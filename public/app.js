@@ -29,10 +29,10 @@
     console.log('no');
     /* geolocation IS NOT available */
   }
-    $.ajax({
+  $.ajax({
     type: 'POST',
     url: '/text',
-    data: {msg:"cmon"},
+    data: {msg:'cmon'},
     success: function(parsedJson) {
       console.log(parsedJson);
       console.log('success');
