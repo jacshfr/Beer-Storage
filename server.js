@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use(express.static(__dirname + '/public'));
+
 app.post('/text', function(req, res) {
   console.log(req.body.msg);
   twil.sendMessage({
@@ -33,9 +35,6 @@ app.post('/text', function(req, res) {
 app.post('/response', function(req, res) {
   console.log(req.body);
 })
-
-app.use(express.static(__dirname + '/public'));
-
 
 app.post('/', function(req, res) {
   var lat = req.body.lat;
