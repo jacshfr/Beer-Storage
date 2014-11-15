@@ -25,7 +25,7 @@ app.get('/text', function(req, res) {
   twil.sendMessage({
       to: "+19152521559",
       from: "+14157693308",
-      body: req.body.msg,
+      body: 'hullo',
       statusCallback: function(err) {
         console.log('it worked');
         }
