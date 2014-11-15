@@ -16,16 +16,12 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/text', function(req, res) {
-  // twil.applications("AP09fd25bd1a4ead4467f6518fe7752e08").get(function(err, app) {
-  //   console.log(app.smsUrl);
-  //   console.log(app.smsMethod)
-  // });
-  console.log(req.body.Body);
+app.post('/text', function(req, res) {
+  console.log(req.body.msg);
   twil.sendMessage({
       to: "+19152521559",
       from: "+14157693308",
-      body: 'hullo',
+      body: req.body.msg,
       statusCallback: function(err) {
         console.log('it worked');
         }
@@ -37,8 +33,7 @@ app.get('/text', function(req, res) {
 });
 
 app.post('/response', function(req, res) {
-  console.log(req.body.Body)
-  //   console.log(req.body);
+    console.log(req.body.Body);
   // twil.sendMessage({
   //     to: "+19152521559",
   //     from: "+14157693308",
@@ -50,7 +45,7 @@ app.post('/response', function(req, res) {
   //     console.log('hullo');
   //     // console.log(message.sid);
   //     };
-      res.send('what up!');
+      res.send({look: "look!"});
 });
 
 app.post('/', function(req, res) {
