@@ -16,36 +16,44 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(__dirname + '/public'));
 
-app.post('/text', function(req, res) {
-  console.log(req.body.msg);
-  twil.sendMessage({
-      to: "+19152521559",
-      from: "+14157693308",
-      body: req.body.msg,
-      statusCallback: function(err) {
-        console.log('it worked');
-        }
-    }), function(err, message) {
-      console.log('hullo');
-      // console.log(message.sid);
-      };
-      res.send({look: "look!"});
+app.get('/text', function(req, res) {
+  twil.applications("AP09fd25bd1a4ead4467f6518fe7752e08").get(function(err, app) {
+    console.log(app.smsUrl);
+    console.log(app.smsMethod)
+  });
+  // console.log(req.body.msg);
+  // twil.sendMessage({
+  //     to: "+19152521559",
+  //     from: "+14157693308",
+  //     body: req.body.msg,
+  //     statusCallback: function(err) {
+  //       console.log('it worked');
+  //       }
+  //   }), function(err, message) {
+  //     console.log('hullo');
+  //     // console.log(message.sid);
+  //     };
+  //     res.send({look: "look!"});
 });
 
 app.post('/response', function(req, res) {
-    console.log(req.body);
-  twil.sendMessage({
-      to: "+19152521559",
-      from: "+14157693308",
-      body: req.body,
-      statusCallback: function(err) {
-        console.log('it worked');
-        }
-    }), function(err, message) {
-      console.log('hullo');
-      // console.log(message.sid);
-      };
-      res.send({look: "look!"});
+   twil.applications("AP09fd25bd1a4ead4467f6518fe7752e08").get(function(err, app) {
+    console.log(req.Body);
+    console.log(app.smsMethod)
+  });
+  //   console.log(req.body);
+  // twil.sendMessage({
+  //     to: "+19152521559",
+  //     from: "+14157693308",
+  //     body: req.body,
+  //     statusCallback: function(err) {
+  //       console.log('it worked');
+  //       }
+  //   }), function(err, message) {
+  //     console.log('hullo');
+  //     // console.log(message.sid);
+  //     };
+  //     res.send({look: "look!"});
 });
 
 app.post('/', function(req, res) {
