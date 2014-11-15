@@ -33,7 +33,19 @@ app.post('/text', function(req, res) {
 });
 
 app.post('/response', function(req, res) {
-      res.send(res.body = 'hi');
+    console.log(req.body);
+  twil.sendMessage({
+      to: "+19152521559",
+      from: "+14157693308",
+      body: req.body,
+      statusCallback: function(err) {
+        console.log('it worked');
+        }
+    }), function(err, message) {
+      console.log('hullo');
+      // console.log(message.sid);
+      };
+      res.send({look: "look!"});
 });
 
 app.post('/', function(req, res) {
