@@ -37,10 +37,7 @@ app.get('/text', function(req, res) {
 });
 
 app.post('/response', function(req, res) {
-   twil.applications("AP09fd25bd1a4ead4467f6518fe7752e08").get(function(err, app) {
-    console.log(req.body.Body);
-    console.log(app.smsMethod)
-  });
+  console.log(req.body.Body)
   //   console.log(req.body);
   // twil.sendMessage({
   //     to: "+19152521559",
@@ -53,7 +50,7 @@ app.post('/response', function(req, res) {
   //     console.log('hullo');
   //     // console.log(message.sid);
   //     };
-  //     res.send({look: "look!"});
+      res.send('what up!');
 });
 
 app.post('/', function(req, res) {
