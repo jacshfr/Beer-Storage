@@ -46,18 +46,17 @@ app.post('/response', function(req, res) {
   } else {
     respObj = 'please respond with "y" or "n"';
   }
-    twil.sendMessage({
-      to: "+19152521559",
-      from: "+14157693308",
-      body: respObj,
-      statusCallback: function(err) {
-        console.log('it worked');
-        }
-    }), function(err, message) {
-      console.log('hullo');
-      // console.log(message.sid);
-      };
-  };
+  twil.sendMessage({
+    to: "+19152521559",
+    from: "+14157693308",
+    body: respObj,
+    statusCallback: function(err) {
+      console.log('it worked');
+      }
+  }), function(err, message) {
+    console.log('hullo');
+    // console.log(message.sid);
+    };
       res.send({look: "look!"});
 });
 
