@@ -49,10 +49,7 @@ app.post('/', function(req, res) {
             }
         }), function(err, message) {
           console.log('hullo');
-          // console.log(message.sid);
           };
-            res.send({look: "look!"});
-
         res.json(obj);
       }
   });
