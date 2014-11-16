@@ -39,12 +39,20 @@
         when: 'Friday at 7pm',
         invites: [
           {
-            name: 'Holly Shafer',
-            phoneNum: '+19153291893',
+            name: 'Sam',
+            phoneNum: '+12064669834',
             coming: false
           }, {
-            name: 'Jacob Shafer',
-            phoneNum: '+9152521559',
+            name: 'Matt',
+            phoneNum: '+12058211458',
+            coming: false
+          }, {
+            name: 'Brent',
+            phoneNum: '+16175493609',
+            coming: false
+          }, {
+            name: 'Jacob',
+            phoneNum: '+19152521559',
             coming: false
           }
         ]

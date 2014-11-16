@@ -3,9 +3,7 @@
 var express = require('express');
 var request = require('superagent');
 var bodyParser = require('body-parser');
-var accountSid = 'AC25571a0c40f7b73c6e794c461033825f';
-var authToken = "8508d33bc7bdfa213386318431c51d60";
-var twil = require('twilio')(accountSid, authToken);
+var twil = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
 var app = express();
 
 var port = process.env.PORT || 2000;
@@ -24,6 +22,7 @@ app.post('/text', function(req, res) {
 
   for (var i = 0; i < invite.length; i++) {
 
+    console.log(invite[i]);
     var msgObj = invite[i].name + ', I am having a ' +
     events.name + '. Would you like to come to the ' +
     events.location + ' on ' + events.when +
@@ -31,7 +30,7 @@ app.post('/text', function(req, res) {
 
     twil.sendMessage({
       to: invite[i].phoneNum,
-      from: "+14157693308",
+      from: process.env.TWILIONUM, //|| "+14157693308",
       body: msgObj,
       statusCallback: function(err) {
         console.log('it worked');
@@ -57,7 +56,7 @@ app.post('/response', function(req, res) {
   }
   twil.sendMessage({
     to: respNum,
-    from: "+14157693308",
+    from: process.env.TWILIONUM, //|| "+14157693308",
     body: respObj,
     statusCallback: function(err) {
       console.log('it worked');

@@ -46,3 +46,12 @@ describe('weather and jacket yes or no', function() {
   });
 });
 
+// describe('send a text on page load', function() {
+//   it('should initiate a call to twilio', function(done) {
+//     .post('/text')
+//     .end()
+
+//     })
+//   })
+// })
+
