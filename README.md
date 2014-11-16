@@ -1,6 +1,7 @@
-https://shouldiweararainjacket.herokuapp.com/
+ld Status](https://travis-ci.org/jacshfr/Should-I-Wear-A-Jacket.svg?branch=master)](https://travis-ci.org/jacshfr/Should-I-Wear-A-Jacket)
 
-[![Build Status](https://travis-ci.org/jacshfr/Beer-Storage.svg)](https://travis-ci.org/jacshfr/Beer-Storage)
+https://shouldiweararainjacket.herokuapp.com
+
 Beer-Storage
 ============
 
