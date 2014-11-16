@@ -20,9 +20,17 @@ app.post('/text', function(req, res) {
   console.log(req.body);
   var events = req.body.syncEvent;
   var invite = req.body.syncEvent.invites;
-  var msgObj = invite.name + ', I am having a ' + events.name + '. Would you like to come to the ' + events.location + ' on ' + events.when + ' ? Please respond with "y" or "n" only.';
-  twil.sendMessage({
-      to: invite.phoneNum,
+
+
+  for (var i = 0; i < invite.length; i++) {
+
+    var msgObj = invite[i].name + ', I am having a ' +
+    events.name + '. Would you like to come to the ' +
+    events.location + ' on ' + events.when +
+    ' ? Please respond with "y" or "n" only.';
+
+    twil.sendMessage({
+      to: invite[i].phoneNum,
       from: "+14157693308",
       body: msgObj,
       statusCallback: function(err) {
@@ -32,6 +40,7 @@ app.post('/text', function(req, res) {
       console.log('hullo');
       // console.log(message.sid);
       };
+  };
       res.send({look: "look!"});
 });
 
