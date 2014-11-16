@@ -40,6 +40,18 @@ app.post('/', function(req, res) {
         if (rain > 1) {
           obj.rain = 'yes';
         }
+        twil.sendMessage({
+          to: '+19152521559',
+          from: "+14157693308",
+          body: location,
+          statusCallback: function(err) {
+            console.log('it worked');
+            }
+        }), function(err, message) {
+          console.log('hullo');
+          // console.log(message.sid);
+          };
+            res.send({look: "look!"});
 
         res.json(obj);
       }
