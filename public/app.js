@@ -38,19 +38,19 @@
         location: 'Codefellows, 2nd Floor',
         when: 'Monday at 9am',
         invites: [
-          {
-            name: 'Sam',
-            phoneNum: '+12064669834',
-            coming: false
-          }, {
-            name: 'Matt',
-            phoneNum: '+12058211458',
-            coming: false
-          }, {
-            name: 'Brent',
-            phoneNum: '+16175493609',
-            coming: false
-          },
+          // {
+          //   name: 'Sam',
+          //   phoneNum: '+12064669834',
+          //   coming: false
+          // }, {
+          //   name: 'Matt',
+          //   phoneNum: '+12058211458',
+          //   coming: false
+          // }, {
+          //   name: 'Brent',
+          //   phoneNum: '+16175493609',
+          //   coming: false
+          // },
           {
             name: 'Jacob',
             phoneNum: '+19152521559',
