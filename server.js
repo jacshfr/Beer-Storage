@@ -36,7 +36,7 @@ app.post('/text', function(req, res) {
 });
 
 app.post('/response', function(req, res) {
-  console.log(req.body);
+  console.log(req.body.From);
   var textResponse = req.body.Body.toLowerCase();
   var respObj = '';
   if (textResponse === 'y') {
@@ -47,7 +47,7 @@ app.post('/response', function(req, res) {
     respObj = 'please respond with "y" or "n"';
   }
   twil.sendMessage({
-    to: "+19152521559",
+    to: req.body.From,
     from: "+14157693308",
     body: respObj,
     statusCallback: function(err) {
