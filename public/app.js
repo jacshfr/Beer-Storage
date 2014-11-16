@@ -32,7 +32,17 @@
   $.ajax({
     type: 'POST',
     url: '/text',
-    data: {msg:'cmon'},
+    data: {
+      syncEvent: {
+      name: 'Group',
+      location: 'Shafer House',
+      when: 'Friday at 7pm',
+      invites: {
+        name: 'Brent Parrish',
+        phoneNum: '+19152521559',
+        coming: false
+      }
+    }},
     success: function(parsedJson) {
       console.log(parsedJson);
       console.log('success');

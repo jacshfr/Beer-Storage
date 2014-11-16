@@ -17,11 +17,14 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(__dirname + '/public'));
 
 app.post('/text', function(req, res) {
-  console.log(req.body.msg);
+  console.log(req.body);
+  var events = req.body.syncEvent;
+  var invite = req.body.syncEvent.invites;
+  var msgObj = invite.name + ', I am having a ' + events.name + '. Would you like to come to ' + events.location + ' on ' + events.when + ' ? Please respond with "y" or "n" only.';
   twil.sendMessage({
-      to: "+19152521559",
+      to: invite.phoneNum,
       from: "+14157693308",
-      body: req.body.msg,
+      body: msgObj,
       statusCallback: function(err) {
         console.log('it worked');
         }
@@ -34,17 +37,19 @@ app.post('/text', function(req, res) {
 
 app.post('/response', function(req, res) {
     console.log(req.body.Body);
-  // twil.sendMessage({
-  //     to: "+19152521559",
-  //     from: "+14157693308",
-  //     body: req.body,
-  //     statusCallback: function(err) {
-  //       console.log('it worked');
-  //       }
-  //   }), function(err, message) {
-  //     console.log('hullo');
-  //     // console.log(message.sid);
-  //     };
+  if (req.body.Body === 'y') {
+    twil.sendMessage({
+      to: "+19152521559",
+      from: "+14157693308",
+      body: 'you are awesome, see you there!',
+      statusCallback: function(err) {
+        console.log('it worked');
+        }
+    }), function(err, message) {
+      console.log('hullo');
+      // console.log(message.sid);
+      };
+  };
       res.send({look: "look!"});
 });
 
