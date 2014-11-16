@@ -20,7 +20,7 @@ app.post('/text', function(req, res) {
   console.log(req.body);
   var events = req.body.syncEvent;
   var invite = req.body.syncEvent.invites;
-  var msgObj = invite.name + ', I am having a ' + events.name + '. Would you like to come to ' + events.location + ' on ' + events.when + ' ? Please respond with "y" or "n" only.';
+  var msgObj = invite.name + ', I am having a ' + events.name + '. Would you like to come to the ' + events.location + ' on ' + events.when + ' ? Please respond with "y" or "n" only.';
   twil.sendMessage({
       to: invite.phoneNum,
       from: "+14157693308",
@@ -36,7 +36,7 @@ app.post('/text', function(req, res) {
 });
 
 app.post('/response', function(req, res) {
-  console.log(req.body.From);
+  var respNum = req.body.From;
   var textResponse = req.body.Body.toLowerCase();
   var respObj = '';
   if (textResponse === 'y') {
@@ -47,7 +47,7 @@ app.post('/response', function(req, res) {
     respObj = 'please respond with "y" or "n"';
   }
   twil.sendMessage({
-    to: req.body.From,
+    to: respNum,
     from: "+14157693308",
     body: respObj,
     statusCallback: function(err) {

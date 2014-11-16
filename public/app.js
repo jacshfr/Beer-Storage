@@ -39,7 +39,7 @@
       when: 'Friday at 7pm',
       invites: {
         name: 'Brent Parrish',
-        phoneNum: '+19152521559',
+        phoneNum: '+19153291893',
         coming: false
       }
     }},
