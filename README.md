@@ -1,3 +1,5 @@
+https://shouldiweararainjacket.herokuapp.com/
+
 [![Build Status](https://travis-ci.org/jacshfr/Beer-Storage.svg)](https://travis-ci.org/jacshfr/Beer-Storage)
 Beer-Storage
 ============
