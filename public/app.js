@@ -29,6 +29,4 @@
     console.log('no');
     /* geolocation IS NOT available */
   }
-    dataType: 'json'
-  });
 }());
