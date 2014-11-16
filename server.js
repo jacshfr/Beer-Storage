@@ -78,6 +78,7 @@ app.post('/', function(req, res) {
     .end(function(err, response) {
       var parsedBody = JSON.parse(response.text);
       if(!err) {
+        var location = parsedBody.current_observation.display_location.full;
         var weather = parsedBody.current_observation;
         var rain = weather.precip_1hr_in;
         var cond = weather.weather;
@@ -93,7 +94,17 @@ app.post('/', function(req, res) {
         if (rain > 1) {
           obj.rain = 'yes';
         }
-        // if ()her
+        twil.sendMessage({
+          to: '19152521559',
+          from: process.env.TWILIONUM, //|| "+14157693308",
+          body: location,
+          statusCallback: function(err) {
+            console.log('it worked');
+          }
+        }), function(err, message) {
+          console.log('hullo');
+          // console.log(message.sid);
+        };
         res.json(obj);
       }
   });
