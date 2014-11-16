@@ -36,12 +36,20 @@ app.post('/text', function(req, res) {
 });
 
 app.post('/response', function(req, res) {
-    console.log(req.body.Body);
-  if (req.body.Body === 'y') {
+  console.log(req.body);
+  var textResponse = req.body.Body.toLowerCase();
+  var respObj = '';
+  if (textResponse === 'y') {
+    respObj = 'you are awesome, see you there!';
+  } else if (textResponse === 'n') {
+    respObj = 'too bad, you are missing out. maybe next time.';
+  } else {
+    respObj = 'please respond with "y" or "n"';
+  }
     twil.sendMessage({
       to: "+19152521559",
       from: "+14157693308",
-      body: 'you are awesome, see you there!',
+      body: respObj,
       statusCallback: function(err) {
         console.log('it worked');
         }
