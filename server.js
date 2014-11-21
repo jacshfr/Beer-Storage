@@ -14,6 +14,50 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(__dirname + '/public'));
 
+app.post('/text', function(req, res) {
+  console.log(req);
+  var events = req.body.syncEvent;
+  var invite = req.body.syncEvent.invites;
+  var msgObj = invite.name + ', I am having a ' + events.name + '. Would you like to come to the ' + events.location + ' on ' + events.when + ' ? Please respond with "y" or "n" only.';
+  twil.sendMessage({
+      to: invite.phoneNum,
+      from: "+14157693308",
+      body: msgObj,
+      statusCallback: function(err) {
+        console.log('it worked');
+        }
+    }), function(err, message) {
+      console.log('hullo');
+      // console.log(message.sid);
+      };
+      res.send({look: "look!"});
+});
+
+app.post('/response', function(req, res) {
+  var respNum = req.body.From;
+  var textResponse = req.body.Body.toLowerCase();
+  var respObj = '';
+  if (textResponse === 'y') {
+    respObj = 'you are awesome, see you there!';
+  } else if (textResponse === 'n') {
+    respObj = 'too bad, you are missing out. maybe next time.';
+  } else {
+    respObj = 'please respond with "y" or "n"';
+  }
+  twil.sendMessage({
+    to: respNum,
+    from: "+14157693308",
+    body: respObj,
+    statusCallback: function(err) {
+      console.log('it worked');
+      }
+  }), function(err, message) {
+    console.log('hullo');
+    // console.log(message.sid);
+    };
+      res.send({look: "look!"});
+});
+
 app.post('/', function(req, res) {
   var lat = req.body.lat;
   var lon = req.body.lon;
@@ -26,18 +70,20 @@ app.post('/', function(req, res) {
       if(!err) {
         var location = parsedBody.current_observation.display_location.full;
         var weather = parsedBody.current_observation;
-        var rain = weather.precip_1hr_in;
+        var rain = weather.weather;
         var cond = weather.weather;
         var temp = weather.temp_f;
-
+        var forecast = weather.forecast_url;
         var obj = {jacket: 'no jacket',
                    rain: 'no rain',
                    temp: temp,
-                   test: 'test'};
+                   test: 'test',
+                  forecast: forecast };
+                  console.log(weather);
         if (cond != 'Clear' || temp < 60) {
           obj.jacket = 'yes';
         }
-        if (rain > 1) {
+        if (rain === 'Rain') {
           obj.rain = 'yes';
         }
 
