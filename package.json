@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "test": "grunt --verbose"
-    // "start": "node server.js"
   },
   "repository": {
     "type": "git",
